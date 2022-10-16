@@ -1,0 +1,17 @@
+[
+  {
+    "available": true,
+    "data": 100500
+  },
+  {
+    "available": true
+  },
+  {
+    "color": "red",
+    "reference": "#0f0"
+  },
+  {
+    "color": "red",
+    "value": "#f00"
+  }
+]

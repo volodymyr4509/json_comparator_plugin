@@ -1,0 +1,28 @@
+[
+  [
+    {
+      "color": "blue",
+      "value": "##1919ff"
+    },
+    {
+      "color": "blue",
+      "value": "#00f"
+    }
+  ],
+  [
+    {
+      "color": "green",
+      "value": "#0f0"
+    },
+    {
+      "color": "red",
+      "value": "#f00"
+    }
+  ],
+  [
+    {
+      "color": "red",
+      "value": "#f00"
+    }
+  ]
+]
