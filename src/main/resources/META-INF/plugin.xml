@@ -8,7 +8,7 @@
     <name>Json_comparator</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="volodymyr4509@gmail.com" url="https://github.com/volodymyr4509/json_comparator_plugin">JSON comparator</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
@@ -30,7 +30,7 @@
     </extensions>
 
     <actions>
-        <action id="com.single.ton.json_comparator.JsonCompareFilesAction" class="com.single.ton.json_comparator.JsonCompareFilesAction" text="Compare json">
+        <action id="com.single.ton.json_comparator.JsonCompareFilesAction" class="com.single.ton.json_comparator.JsonCompareFilesAction" text="Compare JSON">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="CompareTwoFiles"/>
         </action>
     </actions>
