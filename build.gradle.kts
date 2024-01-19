@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.single.ton"
-version = "1.1-SNAPSHOT"
+version = "1.2-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("213")
-        untilBuild.set("232.*")
+        untilBuild.set("241.*")
     }
 
     signPlugin {
