@@ -13,17 +13,12 @@ import com.intellij.openapi.editor.impl.DocumentImpl;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vcs.FilePath;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Stream;
-
-import static com.intellij.diff.DiffRequestFactoryImpl.getContentTitle;
-import static com.intellij.diff.DiffRequestFactoryImpl.getTitle;
-import static com.intellij.vcsUtil.VcsUtil.getFilePath;
 
 public class JsonCompareFilesAction extends CompareFilesAction {
     private JsonProcessor jsonProcessor = new JsonProcessor();
@@ -43,7 +38,8 @@ public class JsonCompareFilesAction extends CompareFilesAction {
 
     @Override
     protected DiffRequest getDiffRequest(@NotNull AnActionEvent e) {
-        VirtualFile[] data = e.getRequiredData(CommonDataKeys.VIRTUAL_FILE_ARRAY);
+        VirtualFile[] data = e.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY);
+        if (data == null || data.length == 0) return new ErrorDiffRequest("No files selected");
         VirtualFile left = data[0];
         VirtualFile right;
 
@@ -77,14 +73,13 @@ public class JsonCompareFilesAction extends CompareFilesAction {
     }
 
     private String contentTitle(VirtualFile file) {
-        return getContentTitle(getFilePath(file));
+        return file.getName();
     }
 
     private String mainTitle(VirtualFile file1, VirtualFile file2) {
-        FilePath path1 = file1 != null ? getFilePath(file1) : null;
-        FilePath path2 = file2 != null ? getFilePath(file2) : null;
-
-        return getTitle(path1, path2, " <-> ");
+        String name1 = file1 != null ? file1.getName() : "";
+        String name2 = file2 != null ? file2.getName() : "";
+        return name1 + " <-> " + name2;
     }
 
     private boolean isValidJsonFile(VirtualFile file) {
