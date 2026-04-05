@@ -2,14 +2,13 @@ package com.single.ton.json_comparator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intellij.diff.actions.CompareFilesAction;
+import com.intellij.diff.DiffContentFactory;
 import com.intellij.diff.contents.DiffContent;
-import com.intellij.diff.contents.DocumentContentImpl;
 import com.intellij.diff.requests.DiffRequest;
 import com.intellij.diff.requests.ErrorDiffRequest;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.editor.impl.DocumentImpl;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
@@ -69,7 +68,7 @@ public class JsonCompareFilesAction extends CompareFilesAction {
         Object json = mapper.readValue(new String(file.contentsToByteArray(), file.getCharset()), Object.class);
         jsonProcessor.deepSort(json);
         String prettyJsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
-        return new DocumentContentImpl(new DocumentImpl(prettyJsonString));
+        return DiffContentFactory.getInstance().create(prettyJsonString);
     }
 
     private String contentTitle(VirtualFile file) {
