@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.single.ton"
-version = "1.4-SNAPSHOT"
+version = "1.5"
 
 repositories {
     mavenCentral()
@@ -23,7 +23,6 @@ intellijPlatform {
     pluginConfiguration {
         ideaVersion {
             sinceBuild = "251"
-            untilBuild = ""
         }
     }
 
